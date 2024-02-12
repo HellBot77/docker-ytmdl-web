@@ -8,7 +8,7 @@ on:
 env:
   PLATFORMS: linux/arm64
   DOCKERHUB_USERNAME: helllord
-  DOCKERHUB_REPOSITORY: ytmdl-web-v2
+  DOCKERHUB_REPOSITORY: ytmdl-web
   TAG_GIT_COMMIT: deepjyoti30/ytmdl-web-v2?production
 
 jobs:
