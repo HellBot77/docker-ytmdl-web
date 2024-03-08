@@ -8,7 +8,7 @@ on:
 env:
   PLATFORMS: linux/arm64
   SOURCE_REPOSITORY: deepjyoti30/ytmdl-web-v2:production
-  DOCKERHUB_REPOSITORY: helllord/ytmdl-web
+  DOCKERHUB_REPOSITORY: helllord/ytmdl-web-v2
 
 jobs:
   get-tag:
