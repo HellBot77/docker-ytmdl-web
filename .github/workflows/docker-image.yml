@@ -33,11 +33,18 @@ jobs:
     if: ${{ needs.get-tag.outputs.tag }}
     runs-on: ubuntu-latest
     steps:
+      - name: Set checkout action
+        id: checkout-action
+        run: |
+          echo "repository=${SOURCE_REPOSITORY%:*}" >> $GITHUB_OUTPUT
+          echo "ref=${SOURCE_REPOSITORY##*:}" >> $GITHUB_OUTPUT
       - name: Fetch repository
         uses: actions/checkout@v4
         with:
-          repository: ${{ env.SOURCE_REPOSITORY }}
-          ref: ${{ needs.get-tag.outputs.tag }}
+          repository: ${{ steps.checkout-action.outputs.repository }}
+          ref: ${{ steps.checkout-action.outputs.ref }}
+      - name: Checkout source repository
+        run: git checkout ${{ needs.get-tag.outputs.tag }}
       - name: Set Docker Hub username
         id: dockerhub-username
         run: echo "username=${DOCKERHUB_REPOSITORY%%/*}" >> $GITHUB_OUTPUT
